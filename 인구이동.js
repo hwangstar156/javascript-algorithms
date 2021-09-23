@@ -1,6 +1,5 @@
 const fs = require("fs");
 const input = fs.readFileSync("/dev/stdin", "utf-8").trim().split("\n");
-
 const mapInfo = input[0].split(" ");
 const n = parseInt(mapInfo[0]);
 const L = parseInt(mapInfo[1]);
