@@ -40,7 +40,6 @@ const convertMap = () => {
 
 const solution = () => {
   while (flag) {
-    const visit = Array.from(Array(m), () => new Array(n).fill(false));
     flag = false;
     const subSet = new Set();
     for (let i = 0; i < m; i++) {
@@ -52,7 +51,7 @@ const solution = () => {
         const deletedPoint = [];
         for (let p = 0; p < 2; p++) {
           for (let q = 0; q < 2; q++) {
-            checkArr.add(boardMap[i + p][j + q]);
+            checkArr.add(board[i + p][j + q]);
             deletedPoint.push([i + p, j + q]);
           }
         }
@@ -60,22 +59,17 @@ const solution = () => {
         if (checkArr.size === 1) {
           flag = true;
           deletedPoint.forEach((point) => {
-            if (!visit[point[0]][point[1]]) {
-              visit[point[0]][point[1]] = true;
-              subSet.add(point);
-            }
+            subSet.add(point);
           });
         }
       }
     }
-    console.log(subSet);
     answer += subSet.size;
     subSet.forEach((point) => {
       boardMap[point[0]][point[1]] = 0;
     });
     boardMap = convertMap();
     console.log(boardMap);
-    console.log(answer);
   }
 };
 
