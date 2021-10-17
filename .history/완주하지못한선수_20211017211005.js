@@ -1,0 +1,25 @@
+const completionObject = {};
+const participant = ["leo", "kiki", "eden"];
+const completion = ["eden", "kiki"];
+
+function solution(participant, completion) {
+  let answer = "";
+  participant.forEach((e) => {
+    if (!completionObject[e]) {
+      completionObject[e] = 1;
+    } else {
+      completionObject[e] += 1;
+    }
+  });
+  completion.forEach((e) => {
+    completionObject[e] -= 1;
+  });
+  Object.entries(completionObject).forEach((e) => {
+    if (e[1] !== 0) {
+      answer = e[0];
+    }
+  });
+  return answer;
+}
+
+console.log(solution(participant, completion));
